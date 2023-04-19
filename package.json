@@ -1,8 +1,19 @@
 {
   "name": "cipher",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/cipher.umd.cjs",
+  "module": "./dist/cipher.js",
+  "exports": {
+    ".": {
+      "import": "./dist/cipher.js",
+      "require": "./dist/cipher.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
