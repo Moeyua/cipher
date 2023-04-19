@@ -1,2 +1,2 @@
 # cipher
- Secure password generation for all your needs.
+Cipher is a reliable and secure password generation library that provides strong and unique passwords for all your needs. With its robust and customizable algorithms, Cipher ensures that your passwords are encrypted and protected, giving you peace of mind when it comes to your online security. Whether you're looking for passwords for your email, banking, or social media accounts, Cipher has you covered. So why settle for weak passwords when you can trust Cipher to generate strong ones for you?
