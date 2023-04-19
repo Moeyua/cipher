@@ -1,24 +1,63 @@
-import "./style.css";
-import typescriptLogo from "./typescript.svg";
-import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter";
+interface CipherOptions {
+  length?: number;
+  uppercase?: boolean;
+  lowercase?: boolean;
+  numbers?: boolean;
+  symbols?: boolean;
+  charset?: string;
+}
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+const defaultOptions: CipherOptions = {
+  length: 10,
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  symbols: true,
+  charset:
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-={}[]|;:"<>,.?/',
+};
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+const numberChars = "0123456789";
+const symbolChars = '!@#$%^&*()_+-={}[]|;:"<>,.?/';
+
+function generatePassword(options: CipherOptions = {}): string {
+  const { length, uppercase, lowercase, numbers, symbols, charset } = {
+    ...defaultOptions,
+    ...options,
+  };
+
+  let chars = "";
+
+  if (charset) {
+    chars = charset;
+  } else {
+    if (uppercase) {
+      chars += uppercaseChars;
+    }
+
+    if (lowercase) {
+      chars += lowercaseChars;
+    }
+
+    if (numbers) {
+      chars += numberChars;
+    }
+
+    if (symbols) {
+      chars += symbolChars;
+    }
+  }
+
+  let password = "";
+
+  for (let i = 0; i < (length as number); i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    password += chars[randomIndex];
+  }
+
+  return password;
+}
+
+export default generatePassword;
