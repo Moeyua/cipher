@@ -21,5 +21,10 @@ export default defineConfig({
       },
     },
   },
-  plugins: [dts()],
+  plugins: [
+    dts({
+      root: __dirname,
+      insertTypesEntry: true,
+    }),
+  ],
 });
