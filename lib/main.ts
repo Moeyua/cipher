@@ -22,7 +22,7 @@ const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 const numberChars = "0123456789";
 const symbolChars = '!@#$%^&*()_+-={}[]|;:"<>,.?/';
 
-function generatePassword(options: CipherOptions = {}): string {
+function cipher(options: CipherOptions = {}): string {
   const { length, uppercase, lowercase, numbers, symbols, charset } = {
     ...defaultOptions,
     ...options,
@@ -60,4 +60,4 @@ function generatePassword(options: CipherOptions = {}): string {
   return password;
 }
 
-export default generatePassword;
+export { cipher };

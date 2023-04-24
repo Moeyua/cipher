@@ -2,7 +2,8 @@
   "name": "@moeyua/cipher",
   "author": "moeyua",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "main": "./lib/main.ts",
   "publishConfig": {
     "main": "./dist/cipher.umd.cjs",
     "module": "./dist/cipher.js",

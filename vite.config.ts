@@ -5,7 +5,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "/lib/main.ts"),
+      entry: resolve(__dirname, "./lib/main.ts"),
       name: "Cipher",
       fileName: "cipher",
       formats: ["es", "umd", "cjs"],
@@ -13,18 +13,13 @@ export default defineConfig({
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: [""],
-      output: {
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          vue: "",
-        },
-      },
+      output: {},
     },
   },
   plugins: [
     dts({
-      root: __dirname,
       insertTypesEntry: true,
+      outputDir: ["dist", "types"],
     }),
   ],
 });
